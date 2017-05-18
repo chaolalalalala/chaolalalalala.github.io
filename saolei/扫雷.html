@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+        body{
+            background-image: url("img/beijing.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .scene{
+            width: 500px;
+            height:500px;
+            border-left: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+            margin: 0 auto;
+        }
+        .block{
+            width: 49px;
+            height:49px;
+            background: #333;
+            float: left;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+        }
+        .control{
+            width: 100px;
+            height:100px;
+            position: fixed;
+            top: 0;
+            right: 20px;
+            background: #ccc;
+        }
+        .lei{}
+        .show{
+            background-image:url("img/lei.jpg");
+            background-size: 100%;
+
+        }
+        .num{
+            background: #fff;
+            text-align: center;
+            line-height: 49px;
+        }
+        .qizi{
+            background-image:url("img/旗子.jpg");
+            background-size: 100%;
+        }
+        .flag{
+            width: 100px;
+            height:100px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 20px;
+            color: yellow;
+            border-radius: 10px;
+            background: #2B2F3E;
+        }
+        .over{
+            width: 200px;
+            height:200px;
+            background: #1124ff;
+            font-size: 35px;
+            text-align: center;
+            line-height: 200px;
+            color: yellow;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top:-200px;
+            margin: auto;
+        }
+        .startz{
+            width: 500px;
+            height:500px;
+            background: #4F9FEC;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            right:0;
+            margin: auto;
+            line-height: 200px;
+            text-align: center;
+            font-size: 35px;
+        }
+        .startbtn{
+            width: 100px;
+            height:35px;
+            border-radius: 10px;
+            background: cyan;
+            position: absolute;
+            top: 240px;
+            left:0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            line-height: 35px;
+            font-size: 18px;
+            color: #000;
+            cursor: pointer;
+        }
+        .startbtn1{
+            width: 100px;
+            height:35px;
+            border-radius: 10px;
+            background: cyan;
+            position: absolute;
+            top: 190px;
+            left:0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            line-height: 35px;
+            font-size: 18px;
+            color: #000;
+            cursor: pointer;
+        }
+        .startbtn2{
+            width: 100px;
+            height:35px;
+            border-radius: 10px;
+            background: cyan;
+            position: absolute;
+            top: 290px;
+            left:0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            line-height: 35px;
+            font-size: 18px;
+            color: #000;
+            cursor: pointer;
+        }
+        .playagain{
+            width: 100px;
+            height: 35px;
+            border-radius: 10px;
+            background: #2B2F3E;
+            text-align: center;
+            line-height: 35px;
+            font-size: 18px;
+            color: yellow;
+            margin-top:10px;
+            cursor: pointer;
+        }
+        .time{
+            width: 100px;
+            height: 35px;
+            border-radius: 10px;
+            background: #2B2F3E;
+            text-align: center;
+            line-height: 35px;
+            font-size: 18px;
+            color: yellow;
+            margin-top:10px;
+            cursor: pointer;
+        }
+        .paihang{
+            width: 100px;
+            height: 35px;
+            border-radius: 10px;
+            background: #2B2F3E;
+            text-align: center;
+            line-height: 35px;
+            font-size: 18px;
+            color: yellow;
+            margin-top:10px;
+            cursor: pointer;
+        }
+        .fanhui1{
+            width: 100px;
+            height: 35px;
+            border-radius: 10px;
+            background: #2B2F3E;
+            text-align: center;
+            line-height: 35px;
+            font-size: 18px;
+            color: yellow;
+            margin-top:10px;
+            cursor: pointer;
+        }
+        .bang{
+            width: 50px;
+            height: 180px;
+            padding: 10px 25px;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 14px;
+            color: yellow;
+            background: #2B2F3E;
+            display: none;
+        }
+        .zhezhao{
+            width: 500px;
+            height:500px;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            right:0;
+            margin: auto;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="startz">
+        扫雷游戏
+        <div class="startbtn1">
+            简单
+        </div>
+        <div class="startbtn">
+            一般
+        </div>
+        <div class="startbtn2">
+            困难
+        </div>
+    </div>
+    <div class="zhezhao">
+
+    </div>
+    <div class="scene">
+
+    </div>
+    <div class="control">
+        <div class="flag">flag:</div>
+        <div class="playagain">重新开始</div>
+        <div class="time">00:00</div>
+        <div class="fanhui1">返回</div>
+        <div class="paihang">排行榜</div>
+        <div class="bang">
+        </div>
+    </div>
+    <div class="over">
+        game over
+    </div>
+</body>
+<script src="jquery.js"></script>
+<script>
+    var basttime=localStorage.basttime?JSON.parse(localStorage.basttime):[]
+    var t
+    var p
+    var flag1=true
+    $(".startbtn1").click(function(){
+        p=10
+        gameover()
+        $(".startz").hide()
+        strat()
+        t=setInterval(time,1000)
+    })
+    $(".startbtn").click(function(){
+        p=15
+        gameover()
+        $(".startz").hide()
+        strat()
+        t=setInterval(time,1000)
+    })
+    $(".startbtn2").click(function(){
+        p=20
+        gameover()
+        $(".startz").hide()
+        strat()
+        t=setInterval(time,1000)
+    })
+    $(".fanhui1").click(function(){
+        gameover()
+        $(".zhezhao").css({display:"none"})
+        $(".over").finish()
+        $(".over").css("top",-200)
+        $(".startz").show()
+    })
+    $(".playagain").click(function(){
+        $(".over").finish()
+        $(".over").css("top",-200)
+        gameover()
+        strat()
+        t=setInterval(time,1000)
+    })
+    $(".paihang").click(function(){
+        if(flag1){
+            $(".bang").slideDown()
+        }else{
+            $(".bang").slideUp()
+        }
+        flag1=!flag1
+    })
+//    var t=setInterval(time,1000)
+    var a=0;
+    function time(){
+        a++;
+        var b=0;
+        var c=0
+        if(a>=60){
+            b=a%60
+            c=Math.floor(a/60)
+        }else{
+            b=a
+            c=0
+        }
+       $(".time").html((c<10?"0"+c:c)+":"+(b<10?"0"+b:b))
+    }
+    function strat(){
+        $(".zhezhao").css({display:"none"})
+        var num=p
+    do{
+        $(".scene").empty()
+    for(var i=0;i<10;i++){
+        for(var j=0;j<10;j++){
+            var isLei=Math.random()>(1-num/100)
+            $("<div>").addClass(function(){
+                if(isLei){
+                    return "block lei"
+                }else{
+                    return "block"
+                }
+            })      .attr("id",i+"-"+j)
+                    .data("pos",{x:i,y:j})
+                    .mousedown(mousedownEvent)
+                    .appendTo(".scene")
+        }
+    }}while($(".lei").length!=num)
+    function mousedownEvent(e){
+        if(e.which==1){
+            leftClick.call(this)
+        }else if(e.which==3){
+            rightClick.call(this)
+        }
+    }
+    function leftClick(){
+        if($(this).hasClass("qizi")){
+            return
+        }
+        if($(this).hasClass("lei")){
+            $(".lei").addClass("show")
+            $(".over").animate({top:"100px"},2000)
+            $(".zhezhao").css({display:"block"})
+            clearInterval(t)
+        }else{
+            $(this).addClass("num")
+            var pos=$(this).data("pos")
+            var n=0
+            for(var i=pos.x-1;i<=pos.x+1;i++){
+                for(var j=(pos.y-1);j<=pos.y+1;j++){
+                    if(($("#"+i+"-"+j)).hasClass("lei")){
+                        n++
+
+                    }
+                }
+            }
+            $(this).html(n)
+            if(n==0){
+                for(var i=pos.x-1;i<=pos.x+1;i++){
+                    for(var j=pos.y-1;j<=pos.y+1;j++){
+                        var obj=$("#"+i+"-"+j)
+                        if(obj.length==1&&(!obj.hasClass("num"))){
+                            leftClick.call(obj[0])
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    function rightClick(){
+        if($(this).hasClass("num")){
+            return
+        }
+        if($(this).hasClass("qizi")){
+            $(this).removeClass("qizi")
+            num++
+            $(".flag").html("flag:"+num)
+
+        }else{
+            num--
+            if(num<0){
+                num++;
+                $(".over").animate({top:"100px"},2000)
+                clearInterval(t)
+                return
+            }
+            $(this).addClass("qizi")
+            if(num==0){
+                if(($(".qizi").filter(".lei").length)==num){
+                    alert("游戏成功")
+                    clearInterval(t)
+                    var d=$(".time")[0].innerText;
+                    if(basttime.length<3||(basttime.length>=3&&this.shijian<basttime[2].shijian)){
+                        /*basttime.time=d
+                        $(".bang")[0].innerHTML=basttime.time*/
+                        var player=prompt("请输入姓名");
+                        basttime.push({player,shijian:d})
+                        basttime.sort(function(a,b){
+                            if(a.shijian<b.shijian){
+                                return -1
+                            }else {
+                                return 1
+                            }
+                        })
+                        if(basttime.length>3){
+                            basttime.pop()
+                        }
+                        var m=""
+                        basttime.forEach(function(v,i){
+                            var l=v.player+":<br>"+v.shijian+"<br>"
+                            m+=l
+                        })
+                        localStorage.basttime=JSON.stringify(basttime)
+                        /*$(".bang")[0].innerHTML=basttime.player
+                        $(".bang")[0].innerHTML=basttime.shijian*/
+//                        $(".bang")[0].innerHTML=basttime
+                        $(".bang").html(m+"<br>")
+                    }
+                }
+            }
+            $(".flag").html("flag:"+num)
+
+        }
+    }
+    //
+    $(document).on("contextmenu",function(e){
+        e.preventDefault()
+    })
+    }
+    function gameover(){
+        clearInterval(t)
+        $(".zhezhao").css({display:"block"})
+        num=p;
+        a=0;
+        $(".flag").html("falg:"+num)
+        $(".time").html("00:00")
+    }
+</script>
+</html>

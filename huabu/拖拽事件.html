@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body,html{
+            margin: 0;
+            padding: 0;
+            height:100%;
+        }
+        canvas{
+            background: #ccc;
+            display: block;
+            margin: 0 auto;
+        }
+        .kongzhi{
+            width: 250px;
+            height:100%;
+            background: #7e7e7e;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .kongzhi1{
+            width: 100%;
+            height:30px;
+            margin-top: 10px;
+        }
+        .kongzhi2{
+            margin-top: 10px;
+            width: 100%;
+            height:30px;
+        }
+        .xingzhuang{
+            width: 50%;
+            height:30px;
+            font-size: 16px;
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+            float: left;
+        }
+        #shepe{
+            width: 50%;
+            height:30px;
+        }
+        #color{
+            width:50%;
+            height:30px;
+        }
+        #width{
+            width:50%;
+            height:30px;
+            text-align: center;
+        }
+        #style{
+            width:50%;
+            height:30px;
+        }
+        #bianshu{
+            width:50%;
+            height:30px;
+        }
+        #chexiao{
+            width: 60%;
+            height:30px;
+            display: block;
+            margin: 0 auto;
+            margin-top: 20px;
+            background: darkcyan;
+            text-align: center;
+            line-height: 30px;
+            font-size: 14px;
+            outline: none;
+            border: 0;
+        }
+        #baocun{
+            width: 60%;
+            height:30px;
+            display: block;
+            margin: 0 auto;
+            margin-top: 20px;
+            background: darkcyan;
+            text-align: center;
+            line-height: 30px;
+            font-size: 14px;
+            outline: none;
+            border: 0;
+        }
+        #qingchu{
+            width: 60%;
+            height:30px;
+            display: block;
+            margin: 0 auto;
+            margin-top: 20px;
+            background: darkcyan;
+            text-align: center;
+            line-height: 30px;
+            font-size: 14px;
+            outline: none;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="kongzhi">
+    <div class="kongzhi1">
+        <div class="xingzhuang">
+            选择形状
+        </div>
+        <select id="shepe">
+            <option value="rect">矩形</option>
+            <option value="line">直线</option>
+            <option value="neiyuan">内切圆</option>
+            <option value="waiyuan">外接圆</option>
+            <option value="zhongyuan">中心圆</option>
+            <option value="duobian">多边形</option>
+            <option value="qianbi">铅笔</option>
+            <option value="xiangpi">橡皮</option>
+        </select>
+    </div>
+    <div class="kongzhi2">
+        <div class="xingzhuang">
+            选择颜色
+        </div>
+        <input type="color" id="color">
+    </div>
+    <div class="kongzhi2">
+        <div class="xingzhuang">
+            选择线宽
+        </div>
+        <input type="number" id="width" value="2" step="2" min="2" max="20">
+    </div>
+    <div class="kongzhi1">
+        <div class="xingzhuang">
+            选择样式
+        </div>
+        <select id="style">
+            <option value="stroke">描边</option>
+            <option value="fill">填充</option>
+        </select>
+    </div>
+    <div class="kongzhi2">
+        <div class="xingzhuang">
+            选择边数
+        </div>
+        <input type="number" id="bianshu" value="3" min="3" max="12">
+    </div>
+    <input type="button" value="撤销" id="chexiao">
+    <input type="button" value="保存" id="baocun">
+    <input type="button" value="清除" id="qingchu">
+</div>
+<canvas width="500" height="500"></canvas>
+
+</body>
+<script src="Draw.js"></script>
+<script>
+    var canvas=document.querySelector("canvas")
+    var shepe=document.querySelector("#shepe")
+    var color=document.querySelector("#color")
+    var width=document.querySelector("#width")
+    var style=document.querySelector("#style")
+    var bianshu=document.querySelector("#bianshu")
+    var chexiao=document.querySelector("#chexiao")
+    var baocun=document.querySelector("#baocun")
+//    var qianbi=document.querySelector("#qianbi")
+//    var duobian=document.querySelector("#duobian")
+    var cobj=canvas.getContext("2d")
+    var data=[]
+    var s="rect"
+    shepe.onchange=function(){
+        s=this.value;
+    }
+    var c="#000"
+    color.onchange=function(){
+        c=this.value;
+    }
+    var w="2"
+    width.onchange=function(){
+        w=this.value;
+    }
+    var y="stroke"
+    style.onchange=function(){
+        y=this.value;
+    }
+    var b="3"
+    bianshu.onchange=function(){
+        b=this.value
+    }
+    canvas.onmousedown=function(e){
+        var ox=e.offsetX
+        var oy=e.offsetY
+        if(s=="qianbi"){
+            cobj.beginPath()
+            cobj.moveTo(ox,oy)
+        }
+
+        canvas.onmousemove=function(e){
+            var mx=e.offsetX
+            var my=e.offsetY
+            if(s!="xiangpi"){
+                cobj.clearRect(0,0,500,500 )
+                if(data.length!=0){
+                    cobj.putImageData(data[data.length-1],0,0)
+                }
+            }
+            var draw=new Draw(cobj,{color:c,width:w,style:y})
+            draw[s](ox,oy,mx,my,b)
+        }
+        document.onmouseup=function(){
+            data.push(cobj.getImageData(0,0,500,500))
+            canvas.onmousemove=null
+            document.onmouseup=null
+        }
+    }
+    chexiao.onclick=function(){
+
+        if(data.length==0){
+            alert("已经没有了")
+            return
+        }
+        cobj.clearRect(0,0,500,500)
+        data.pop()
+        if(data.length==0){
+            return
+        }
+        cobj.putImageData(data[data.length-1],0,0)
+//        cobj.clearRect(0,0,500,500)
+
+    }
+    baocun.onclick=function () {
+        var r=canvas.toDataURL();
+//        location.href=r;
+        location.assign(r);
+    }
+    var qingchu=document.querySelector("#qingchu");
+    qingchu.onclick=function () {
+        cobj.clearRect(0,0,500,500);
+        data=[];
+    }
+
+</script>
+</html>

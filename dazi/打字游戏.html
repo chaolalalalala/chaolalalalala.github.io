@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            margin: 0;
+            height:100%;
+            overflow: hidden;
+        }
+        .di{
+            width: 1000px;
+            height:100%;
+            margin: 0 auto;
+            background: #cccccc;
+        }
+        .main{
+            width: 800px;
+            height:100%;
+            background: #1e8b49;
+            float: left;
+            position: relative;
+        }
+        .mainyou{
+            width: 200px;
+            height:100%;
+            background: #11478b;
+            float: left;
+        }
+        .box{
+            width: 80%;
+            height:50px;
+            margin: 0 auto;
+            border-radius: 10px;
+            margin: 10px auto;
+            background: #fff;
+        }
+        .name{
+            width: 100%;
+            height:20px;
+            text-align: center;
+            line-height: 20px;
+        }
+        .defen,.guanqia,.shengming{
+            width: 100%;
+            height:30px;
+            text-align: center;
+            line-height: 30px;
+        }
+        .letter{
+            width: 80px;
+            height:80px;
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 80px;
+            text-align: center;
+            position: absolute;
+            border: 1px solid cyan;
+        }
+        .btn{
+            width: 80%;
+            height:30px;
+            text-align: center;
+            line-height: 30px;
+            background: cyan;
+            border-radius: 15px ;
+            margin: 10px auto;
+            cursor: pointer;
+        }
+        .paihang{
+            width: 80%;
+            height:30px;
+            text-align: center;
+            line-height: 30px;
+            background: cyan;
+            border-radius: 15px ;
+            margin: 10px auto;
+            cursor: pointer;
+        }
+        *{
+            user-select: none;
+        }
+        .bang{
+            width: 100%;
+            height:100px;
+            background: cyan;
+            border-radius: 15px ;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="di">
+    <div class="main">
+
+    </div>
+    <div class="mainyou">
+        <div class="box">
+            <div class="name">
+                得分
+            </div>
+            <div class="defen">
+                0
+            </div>
+        </div>
+        <div class="box">
+            <div class="name">
+                关卡
+            </div>
+            <div class="guanqia">
+                1
+            </div>
+        </div>
+        <div class="box">
+            <div class="name">
+                生命值
+            </div>
+            <div class="shengming">
+                5
+            </div>
+        </div>
+        <div class="btn strat">
+            开始
+        </div>
+        <div class="btn zanting">
+            暂停
+        </div>
+        <div class="paihang">
+            排行榜
+            <div class="bang">
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="jquery.js"></script>
+<script>
+
+    /*var num=3;
+    var obj={}
+    function ch(left){
+        for( var i in obj){
+            if(obj[i].left-80<left&&left<obj[i].left+80){
+                return true
+            }
+        }
+    }
+    function zimu(){
+        var div=document.createElement("div")
+        div.className="letter"
+        do{
+        var r=Math.floor(Math.random()*26+65)
+        var le=String.fromCharCode(r)
+        }while(obj[le])
+        obj[le]=true
+        do{
+        var rl =Math.random()*720
+        }while(ch(rl))
+        div.style.left=rl+"px"
+
+        var tl=Math.random()*200
+        div.style.top=tl+"px"
+        obj[le]={left:rl,top:tl,el:div}
+        div.innerHTML=le;
+        main.appendChild(div)
+    }
+    function play(){
+        for(var i=0;i<num;i++){
+            zimu()
+        }
+    }
+    play()
+    setInterval(function(){
+        for(var i in obj){
+            var t=obj[i].top
+            t+=5;
+            obj[i].top=t
+            obj[i].el.style.top=t+"px"
+        }
+    },50)
+    document.onkeydown=function(e){
+        var keydowm=e.keyCode;
+        var L=String.fromCharCode(keydowm);
+        if(obj[L]){
+            main.removeChild(obj[L].el)
+            delete obj[L];
+            zimu()
+        }
+
+    }*/
+
+
+
+    //面向对象
+    var flag4=true
+    $(".paihang").click(function(){
+        if(flag4){
+            $(".bang").slideDown()
+        }else{
+            $(".bang").slideUp()
+        }
+        flag4=!flag4
+    })
+    var main=document.querySelector(".main");
+    var strat1=document.querySelector(".strat")
+    var defen1=document.querySelector(".defen")
+    var guanqia1=document.querySelector(".guanqia")
+    var shengming=document.querySelector(".shengming")
+    var zanting1=document.querySelector(".zanting")
+    class Game{
+        constructor(main,defen1,guanqia1,shengming){
+            this.main=main;
+            this.obj={};
+            this.num=3;
+            this.defen=defen1
+            this.defen1=0
+            this.guanqia=guanqia1
+            this.guanqia1=1
+            this.sudu=5
+            this.shengming=shengming
+            this.shengming1=5
+            this.height=window.innerHeight
+            this.st;
+            this.bastscor=localStorage.bastscor?JSON.parse(localStorage.bastscor):[]
+//            this.bastscor.defen=0
+        }
+        _zimu(){
+            var  div=document.createElement("div")
+            div.className="letter"
+
+            do{
+                var r=Math.floor(Math.random()*26+65)
+                var le=String.fromCharCode(r)
+            }
+            while(this.obj[le])
+            do{
+            var ll=Math.random()*720
+            }while(this._ch(ll))
+            div.style.left=ll+"px"
+            var lt=-Math.random()*100
+            div.style.top=lt+"px"
+            div.innerHTML=le
+            this.obj[le]={left:ll,top:lt,el:div}
+            this.main.appendChild(div)
+        }
+        _ch(left){
+            for( var i in this.obj){
+                if(left>this.obj[i].left-80&&left<this.obj[i].left+80){
+                    return true
+                }
+            }
+        }
+        _move(){
+            this.st=setInterval(function(){
+                for(var i in this.obj){
+                    var t=this.obj[i].top
+                    t+=this.sudu;
+                    this.obj[i].top=t
+                    this.obj[i].el.style.top=t+"px"
+                    if(t>this.height){
+                        this.shengming1--
+
+                        this.shengming.innerHTML=this.shengming1
+                        this.main.removeChild(this.obj[i].el)
+                        delete this.obj[i]
+                        this._zimu()
+                        if(this.shengming1==0){
+
+                            this._gameover()
+                            return
+                        }
+                    }
+                }
+            }.bind(this),50)
+        }
+        _strat(){
+            for(var i=0;i<this.num;i++){
+                this._zimu();
+
+            }
+            this._move()
+            this._keydown()
+//            this._shengming()
+        }
+        _keydown(){
+            document.onkeydown=function(e){
+                var keydown=e.keyCode
+                var L=String.fromCharCode(keydown)
+//                console.log(L)
+                     if(this.obj[L]){
+                         this.defen1++;
+                         this.defen.innerHTML=this.defen1
+                         if(this.defen1%10==0){
+                             this._guanqia()
+                         }
+                        this.main.removeChild(this.obj[L].el)
+                        delete this.obj[L]
+                        this._zimu()
+                     }
+        }.bind(this)
+
+    }
+        _guanqia(){
+            this.guanqia1++;
+            this.guanqia.innerHTML=this.guanqia1
+            if(this.guanqia1<=3){
+                this._zimu()
+            }else{
+                this.sudu++
+            }
+
+        }
+       /* _shengming(){
+            for( var i in this.obj){
+                var T =this.obj[i].top
+                if(T>this.height){
+                    this.shengming--
+                    shengming.inner=this.shengming
+                    if(this.shengming==0){
+                        alert(`游戏结束，得分为${this.defen1}`)
+                    }
+                }
+            }
+        }*/
+        _zanting(){
+            clearInterval(this.st)
+            document.onkeydown=null
+
+        }
+        play(){
+            this._move();
+            this._keydown()
+        }
+        _gameover(){
+            alert(`游戏结束，得分为${this.defen1}`)
+            if(this.bastscor.length<3||(this.bastscor.length>=3&& this.defen1>this.bastscor[2].defen)){
+                var player=prompt("请输入姓名");
+                this.bastscor.push({player,defen:this.defen1});
+                this.bastscor.sort(function(a,b){
+                    if(a.defen>b.defen){
+                        return -1
+                    }else {
+                        return 1
+                    }
+                })
+                if(this.bastscor.length>3){
+                    this.bastscor.pop()
+                }
+                localStorage.bastscor=JSON.stringify(this.bastscor)
+            }
+            $(".bang").html(player+":"+this.defen1+"分<br>")
+
+            this.main.innerHTML=null;
+            this.shengming1=5;
+            this.shengming.innerHTML=5
+            this.sudu=5
+            this.obj={}
+            this.defen1=0
+            this.defen.innerHTML=0
+            this.guanqia1=1;
+            this.guanqia.innerHTML=1
+            clearInterval(this.st)
+
+            lss=true
+
+        }
+    }
+    var game=new Game(main,defen1,guanqia1,shengming)
+//    game._strat()
+    var lss=true
+    strat1.onclick=function(){
+        if(lss){
+            game._strat()
+            lss=false
+        }
+
+
+    }
+    var lcc=true
+    zanting1.onclick=function(){
+        if(lcc){
+            zanting1.innerHTML="继续"
+            game._zanting()
+        }else{
+            zanting1.innerHTML="暂停"
+            game.play()
+        }
+        lcc=!lcc;
+    }
+</script>
+</html>

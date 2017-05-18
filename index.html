@@ -2,9 +2,97 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
+
 <title>gerenzhuye</title>
-<link rel="stylesheet" href="css/jquery.fullPage.css">
 	<link rel="stylesheet" href="css/geren.css">
+	<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		body{overflow:hidden;}
+		.t-container{position:absolute;top:0;left:0;}
+		.t-container .t-content{position:absolute;top:0;left:0;width:302px;height:227px;border: 1px solid #333;background: #ccc}
+		.t-container .t-content img{position:absolute;width:300px;height:225px;background: #ccc}
+		.t-container .t-content .cover{position:absolute;top:0;left:0;/*background-color:rgba(0, 0, 0, 0.75*/);width:300px;height:225px;background: #ccc}
+		.container{position:absolute;-moz-transform:translateX(-50%);-ms-transform:translateX(-50%);-webkit-transform:translateX(-50%);transform:translateX(-50%);left:50%;bottom:50px;}
+		.container .btn{z-index:9999;}
+		.t-content .zz{
+			z-index: 99999;
+			width: 300px;
+			height:223px;
+			position: absolute;
+			top:0;
+			left: 0;
+			font-size: 35px;
+			background: #333;
+			color: #DD0F74;
+			opacity: 0;
+			font-family: "苹方 中等";
+			text-align: center;
+			line-height: 255px;
+		}
+		.contentbox {
+			width: 1000px;
+			margin: auto;
+			margin-top: 2em;
+			clear:left;
+		}
+		.qcontainer {
+			-webkit-perspective: 400;
+			-moz-perspective: 400;
+			float: left;
+			width: 220px;
+			margin-right:20px;
+		}
+		.film {
+			width: 100%;
+			height: 300px;
+			-webkit-transform-style: preserve-3d;
+			-webkit-transition: 1.5s;
+			-moz-transform-style: preserve-3d;
+			-moz-transition: 1.5s;
+		}
+		.film img{
+			width: 220px;
+			height:300px;
+			display: block;
+		}
+		.qcontainer:hover .film {
+			-webkit-transform: rotateY(180deg);
+			-moz-transform: rotateY(180deg);
+		}
+		.face {
+			position: absolute;
+			-webkit-backface-visibility: hidden;
+			-moz-backface-visibility: hidden;
+		}
+		.face h3 {
+			color: white;
+			text-align: center;
+		}
+		.back {
+			-webkit-transform: rotateY(180deg);
+			-moz-transform: rotateY(180deg);
+			background: -webkit-gradient(linear, left top, left bottom, from(#fdbb5a), to(#db5726));
+			background: -moz-linear-gradient(top, #fdbb5a, #db5726);
+			width:220px;
+			height:300px;
+		}
+		.foot{
+			text-align: center;
+			color: #fff;
+			position: fixed;
+			bottom: 20px;
+			left: 50%;
+			margin-left:-126px;
+			font-size: 12px;
+			font-family: "微软雅黑";
+
+		}
+	</style>
+<link rel="stylesheet" href="css/jquery.fullPage.css">
+
 <style>
 .section { text-align: center; font: 50px "Microsoft Yahei"; color: #fff;}
 </style>
@@ -88,7 +176,7 @@ $(function(){
 	<div class="section">
 		<div class="ziliao">
 
-			<span>个人资料</span>
+			<span>个人资料</span><!--
 			<div class="ziliao1 q">
 				<h2>基本资料</h2>
 				姓名：郭超超<br>
@@ -103,69 +191,146 @@ $(function(){
 				<h2>联系方式</h2>
 				电话：15735160310<br>
 				邮箱：1159499702@qq.com<br>
+			</div>-->
+			<div class="contentbox">
+				<div class="qcontainer">
+					<div class="film">
+						<div class="face front">
+							<img src="img/renwu.jpg">
+						</div>
+						<div class="face back"><h3>基本资料</h3>
+							<div class="ziliao3">
+								<h4>郭超超</h4>
+								<h4>男</h4>
+								<h4>22岁</h4>
+							</div></div>
+
+
+					</div>
+				</div>
+				<div class="qcontainer">
+					<div class="film">
+						<div class="face front">
+							<img src="img/xuexiao.jpg">
+						</div>
+						<div class="face back"><h3>毕业学校</h3>
+							<div class="ziliao3">
+								<h4>山西省财政税务专科学校</h4>
+
+							</div></div>
+					</div>
+				</div>
+				<div class="qcontainer">
+					<div class="film">
+						<div class="face front">
+							<img src="img/dianhua.jpg">
+						</div>
+						<div class="face back"><h3>联系方式</h3>
+							<div class="ziliao3">
+								<h4>电话：15735160310</h4>
+								<h4>邮箱：1159499702@qq.com</h4>
+							</div></div>
+					</div>
+				</div>
+				<div class="qcontainer">
+					<div class="film">
+						<div class="face front">
+							<img src="img/aihao.jpg">
+						</div>
+						<div class="face back"><h3>个人爱好</h3>
+							<div class="ziliao3">
+								<h4>打篮球</h4>
+								<h4>听歌</h4>
+								<h4>骑行</h4>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 	<div class="section">
 		<div class="zuopin">
-			<span>作品集</span>
-			<div id="LoopDiv">
-				<input id="S_Num" type="hidden" value="8" />
-				<div id="starsIF" class="imageflow">
-					<img src="img/timg.jpg" longdesc="#" width="250" height="250" />
-					<img src="img/timg (1).jpg" longdesc="#" width="250" height="250" />
-					<img src="img/timg (2).jpg" longdesc="#" width="250" height="250" />
-					<img src="img/jingdong.jpg" longdesc="#" width="250" height="250" />
-					<img src="img/huabu.jpg" longdesc="#" width="250" height="250" />
-					<img src="img/saolei.jpg" longdesc="#" width="250" height="250" />
-					<img src="img/beiwanglu.jpg" longdesc="#" width="250" height="250" />
-					<img src="img/dazi.jpg" longdesc="#" width="250" height="250" />
-					<img src="img/yidong.gif" longdesc="#" width="250" height="250"  />
-					<img src="img/shafa.jpg" longdesc="#" width="250" height="250"  />
-					<!--<img src="images/4.png" longdesc="#" width="280" height="300" alt="Picture" />
-					<img src="images/5.png" longdesc="#" width="280" height="300" alt="Picture" />-->
-				</div>
+			<span class="zuopinji">作品集</span>
+			<div class="t-container">
+
+				<a href="../天猫/index.html"><div class="t-content">
+					<div class="zz">天猫</div>
+					<img class="t-img" src="img/timg.jpg" alt="" />
+					<div class="cover"></div>
+				</div></a>
+
+				<a href="../小米/小米2.html"><div class="t-content">
+					<div class="zz">小米</div>
+					<img class="t-img" src="img/timg%20(1).jpg" alt="" />
+					<div class="cover"></div>
+				</div></a>
+
+				<a href="../苹果/苹果.html"><div class="t-content">
+					<div class="zz">苹果</div>
+					<img class="t-img" src="img/pg3.JPEG" alt="" />
+					<div class="cover"></div>
+				</div></a>
+
+				<a href="../yidong/index.html"><div class="t-content">
+					<div class="zz">中国移动</div>
+					<img class="t-img" src="img/yd.GIF" alt="" />
+					<div class="cover"></div>
+				</div></a>
+
+				<a href="../to/代办事项.html"><div class="t-content">
+					<div class="zz">TODO LIST</div>
+					<img class="t-img" src="img/beiwanglu.jpg" alt="" />
+					<div class="cover"></div>
+				</div></a>
+
+				<a href="../huabu/拖拽事件.html"><div class="t-content">
+					<div class="zz">画板</div>
+					<img class="t-img" src="img/hb1.jpg" alt="" />
+					<div class="cover"></div>
+				</div></a>
+
+				<a href="../沙发网/index.html"><div class="t-content">
+					<div class="zz">沙发网</div>
+					<img class="t-img" src="img/sf2.jpg" alt="" />
+					<div class="cover"></div>
+				</div></a>
+
+				<a href="../saolei/扫雷.html"><div class="t-content">
+					<div class="zz">扫雷游戏</div>
+					<img class="t-img" src="img/saolei.jpg" alt="" />
+					<div class="cover"></div>
+				</div></a>
+
+				<a href="../dazi/打字游戏.html"><div class="t-content">
+					<div class="zz">打字游戏</div>
+					<img class="t-img" src="img/dazi.jpg" alt="" />
+					<div class="cover"></div>
+				</div></a>
+
+				<a href="../jingdong/index.html"><div class="t-content">
+					<div class="zz">京东</div>
+					<img class="t-img" src="img/jingdong.jpg" alt="" />
+					<div class="cover"></div>
+				</div></a>
+
+				<a href="../凡客/fanke.html"><div class="t-content">
+					<div class="zz">凡客</div>
+					<img class="t-img" src="img/fanke.jpg" alt="" />
+					<div class="cover"></div>
+				</div></a>
+
+				<a href="../youyige/优逸客/优逸客.html"><div class="t-content">
+					<div class="zz">优逸客</div>
+					<img class="t-img" src="img/ljg-logo%20(1).png" alt="" />
+					<div class="cover"></div>
+				</div></a>
+
 			</div>
-			<!--<a href="#"><div class="zuopin1" style="background-image: url('img/timg.jpg')">
-				<div class="zhezhao">
-					天猫
-				</div>
-			</div></a>
-			<a href="#"><div class="zuopin1" style="background-image: url('img/timg (1).jpg')">
-				<div class="zhezhao">
-					小米
-				</div>
-			</div></a>
-			<a href="#"><div class="zuopin1" style="background-image: url('img/timg (2).jpg')">
-				<div class="zhezhao">
-					苹果
-				</div>
-			</div></a>
-			<a href="#"><div class="zuopin1"style="background-image: url('img/jingdong.jpg')">
-				<div class="zhezhao">
-					京东
-				</div>
-			</div></a>
-			<a href="#"><div class="zuopin1"style="background-image: url('img/saolei.jpg')">
-				<div class="zhezhao">
-					扫雷
-				</div>
-			</div></a>
-			<a href="#"><div class="zuopin1"style="background-image: url('img/dazi.jpg')">
-				<div class="zhezhao">
-					打字
-				</div>
-			</div></a>
-			<a href="#"><div class="zuopin1"style="background-image: url('img/huabu.jpg')">
-				<div class="zhezhao">
-					画布
-				</div>
-			</div></a>
-			<a href="#"><div class="zuopin1"style="background-image: url('img/beiwanglu.jpg')">
-				<div class="zhezhao">
-					TODO LIST
-				</div>
-			</div></a>-->
+
+			<div class="container">
+				<button type="button" class="btn btn-primary" id="toggle">打开/关闭</button>
+			</div>
 		</div>
 	</div>
 	<div class="section">
@@ -175,9 +340,21 @@ $(function(){
 		</div>
 	</div>
 </div>
+<script>
+	$(".t-content").each(function(index,ele){
+		$(ele).hover(function(){
+			$(".zz").eq(index).css("opacity",0.9)
+		},function(){
+			$(".zz").eq(index).css("opacity",0)
+		})
+	})
+</script>
+<script type="text/javascript" src='js/PerspectiveTransform.js'></script>
+<script type="text/javascript" src='js/TweenMax.min.js'></script>
+<script type="text/javascript" src="js/init.js"></script>
 
-</body>
+<script src="js/zuopin.js"></script>
 <script src="js/geren.js"></script>
-<!--<script src="js/jquery.js"></script>-->
+</body>
 
 </html>

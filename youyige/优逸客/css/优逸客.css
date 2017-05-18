@@ -1,0 +1,283 @@
+.toubu{
+	width: 100%;
+	height: 0.89rem;
+	background: #007be3;
+	position: fixed;
+	top: 0rem;
+	left: 0rem;
+}
+.box{
+	width: 2.27rem;
+	height: 0.84rem;
+	padding-top: 0.16rem;
+	margin: 0 auto;
+}
+.logo{
+	width: 0.7rem;
+	height: 0.67rem;
+	float: left;
+}
+.logo img{
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+.logoz{
+	width: 1.08rem;
+	height: 0.68rem;
+	margin-left: 0.16rem;
+	line-height: 0.68rem;
+	text-align: center;
+	font-size: 0.36rem;
+	color: #fff;
+	float: left;
+}
+.banner{
+	width: 100%;
+	height: 4.21rem;
+	background-image: url('../img/1.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.banner img{
+	width: 100%;
+	height: 100%;
+}
+.bage{
+	width: 100%;
+	height: 4.84rem;
+	padding: 0.28rem 0.1rem 0rem;
+	background: #f5f6fa;
+
+}
+.bage ul{
+	width: 100%;
+	height: 50%;
+	/* background:cyan;  */
+	display: flex;
+	display: -webkit-flex;
+	flex-wrap: nowrap;
+	flex-wrap: wrap;
+	/* justify-content: space-between; */
+	justify-content: space-around;
+}
+.bage ul li{
+	width: 21.83%;
+	height: 100%;
+	
+	/* margin-right: 0.3rem; */
+	/* background: blue; */
+	float: left;
+	
+	
+}
+.tubiao{
+	width: 1.56rem;
+	height: 1.55rem;
+	border-radius: 0.25rem;
+	background: #fff;
+	padding-top: 0.25rem;
+	padding-left: 0.25rem;
+	margin-bottom: 0.16rem;
+}
+.tutu{
+	width: 1.05rem;
+	height: 1.05rem;
+	float: left;
+
+}
+.tutu img{
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+.zi{
+	font-size: 0.32rem;
+	color: #999;
+	text-align: center;
+}
+.tixi{
+	width: 100%;
+	height: 0.65rem;
+	font-size: 0.24rem;
+	color: #1378ba;
+	line-height: 0.65rem;
+	text-align: center;
+	border-bottom: 0.02rem solid #e8e8e8;
+}
+.funr{
+	width: 100%;
+	height: 2.2rem;
+	border-bottom: 0.02rem solid #e8e8e8;
+}
+.funr ul li{
+	width: 50%;
+	height: 100%;
+	padding: 0.38rem 0rem 0.48rem 0.16rem;
+	float: left;
+}
+.funr ul{
+	width: 100%;
+	height: 100%;
+}
+.funr .funr1{
+	border-right: 0.02rem solid #e8e8e8;
+}
+.fuz{
+	width: 1.8rem;
+	height: 1.32rem;
+	float: left;
+	font-size: 0.24rem;
+	text-align: left;
+	line-height: 0.34rem;
+}
+.fuz1{
+	width: 100%;
+	height: 0.34rem;
+	color: #000;
+}
+.fuz2{
+	width: 100%;
+	height: 0.34rem;
+	color: #999999;
+}
+.fut{
+	width: 1.5rem;
+	height: 1.32rem;
+	float: left;
+
+}
+.fut img{
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+.sange{
+	width: 100%;
+	height: 1.56rem;
+
+}
+.sange ul{
+	width: 100%;
+	height: 100%;
+}
+.sange ul li{
+	float: left;
+	width: 33.33%;
+	height: 100%;
+	padding: 0.4rem 0rem 0.38rem 0.2rem;
+	border-right: 0.02rem solid #e8e8e8;
+}
+.sgt{
+	width: 0.6rem;
+	height: 0.6rem;
+	float: left;
+
+}
+.sgt img{
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+.sgz{
+	width: 1.5rem;
+	height: 0.6rem;
+	float: left;
+	font-size: 0.24rem;
+	text-align: left;
+	/* line-height: 0.6rem; */
+}
+.sgz1{
+	float: left;
+	width: 100%;
+	height: 0.34rem;
+	line-height: 0.34rem;
+	color: #000;
+
+}
+.sgz2{
+	float:left;
+	width: 100%;
+	height: 0.6rem;
+	line-height: 0.3rem;
+	color: #999;
+}
+.baitiao{
+	width: 100%;
+	height: 0.8rem;
+}
+.dibu{
+	width: 100%;
+	height: 0.8rem;
+	background: #e7e7e7;
+	position: relative;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+.d1{
+	width: 2.25rem;
+	height: 100%;
+	float: left;
+}
+.d1t{
+	width: 0.32rem;
+	height: 0.32rem;
+	margin-top: 0.28rem;
+	margin-left: 0.27rem;
+	float: left;
+}
+.d1t img{
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+.d1z{
+	float: left;
+	width: 1.04rem;
+	height: 100%;
+	margin-left: 0.1rem;
+	font-size: 0.26rem;
+	color: #000;
+	text-align: center;
+	line-height: 0.8rem;
+}
+.d2{
+	width: 2.25rem;
+	height: 100%;
+	float: right;
+}
+.d3{
+	width: 3rem;
+	height: 0.9rem;
+	border-radius: 0.08rem;
+	background: #ff8d12;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+.d1t1{
+	width: 0.36rem;
+	height: 0.36rem;
+	margin-top: 0.28rem;
+	margin-left: 0.7rem;
+	float: left;
+}
+.d1t1 img{
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+.d1z1{
+	float: left;
+	width: 1.2rem;
+	height: 100%;
+	margin-left: 0.1rem;
+	font-size: 0.3rem;
+	color: #fff;
+	text-align: center;
+	line-height: 0.9rem;
+}
